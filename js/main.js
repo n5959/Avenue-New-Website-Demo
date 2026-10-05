@@ -5,102 +5,7 @@
   var doc = document.documentElement;
   var body = document.body;
 
-  var normalizeProjectName = function (name) {
-    return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
-  };
-  var retrospectiveProjects = {
-    "kinglibertyofficeretailbuilding": { page: "projects-commercial.html", id: "king-liberty-office-retail-building", sqft: 366000 },
-    "rbccentre": { page: "projects-commercial.html", id: "rbc-centre", sqft: 2854000 },
-    "windsorcasinoexpansion": { page: "projects-commercial.html", id: "windsor-casino-expansion", sqft: 1472000 },
-    "kolterofficebuilding": { page: "projects-commercial.html", id: "kolter-office-building", sqft: 720000 },
-    "canoncanada": { page: "projects-commercial.html", id: "canon-canada-head-office", sqft: 486000 },
-    "audicanada": { page: "projects-commercial.html", id: "audi-head-office", sqft: 300000 },
-    "simcoeplacewsibheadquarters": { page: "projects-commercial.html", id: "wsib-building", sqft: 2800000 },
-    "yorkuniversityttcstation": { page: "projects-institutional.html", id: "york-university-ttc-station", sqft: 430000 },
-    "humberriverregionalhospital": { page: "projects-institutional.html", id: "humber-river-regional-hospital", sqft: 3104000 },
-    "torontorehabcentre": { page: "projects-institutional.html", id: "toronto-rehab-centre", sqft: 360000 },
-    "theroyalconservatoryofmusic": { page: "projects-institutional.html", id: "the-royal-conservatory-of-music", sqft: 400000 },
-    "canadianbroadcastingcentreheadquarters": { page: "projects-institutional.html", id: "the-canadian-broadcasting-centre", sqft: 3000000 },
-    "unionstationrevitilization": { page: "projects-institutional.html", id: "union-station-expansion", sqft: 325000 },
-    "kitchenerlibrary": { page: "projects-institutional.html", id: "kitchener-public-library", sqft: 500000 },
-    "sheppardwestttc": { page: "projects-institutional.html", id: "sheppard-west-subway-station", sqft: 718000 },
-    "sickkidsresearchcentre": { page: "projects-institutional.html", id: "hospital-for-sick-children-research-centre", sqft: 1671000 },
-    "universityofwaterloonanotechnologycentre": { page: "projects-institutional.html", id: "university-of-waterloo-nanotechnology-building", sqft: 478000 },
-    "torontowesternhospitalstagetwo": { page: "projects-institutional.html", id: "toronto-western-hospital-krembil-discovery-centre", sqft: 305000 },
-    "nationalballetschool": { page: "projects-institutional.html", id: "canada-s-national-ballet-school-celia-franca-centre", sqft: 350000 },
-    "williamoslerhealthcentre": { page: "projects-institutional.html", id: "william-osler-health-centre-brampton-civic-hospital", sqft: 1180000 },
-    "stockyardscondo": { page: "projects-residential.html", id: "stockyards-condo", sqft: 700000 },
-    "theorycondos": { page: "projects-residential.html", id: "theory-condos", sqft: 600000 },
-    "viabloorcondo": { page: "projects-residential.html", id: "via-bloor-condo", sqft: 2300000 },
-    "artshoppecondo": { page: "projects-residential.html", id: "art-shoppe-condo", sqft: 1600000 },
-    "101erskinecondo": { page: "projects-residential.html", id: "101-erskine-condo", sqft: 1170000 },
-    "hamptonhouse": { page: "projects-residential.html", id: "hampton-house", sqft: 594000 },
-    "themercercondos": { page: "projects-residential.html", id: "the-mercer-condos", sqft: 1100000 },
-    "300frontstreetwestcondos": { page: "projects-residential.html", id: "300-front-street-west-condos", sqft: 2000000 },
-    "10chichesterplaceapartments": { page: "projects-residential.html", id: "10-chichester-place-apartments", sqft: 700000 },
-    "trumptower": { page: "projects-residential.html", id: "trump-tower", sqft: 1904000 },
-    "onyxcondominiums": { page: "projects-residential.html", id: "onyx-condominiums", sqft: 1152000 },
-    "mapleleafsquare": { page: "projects-residential.html", id: "maple-leaf-square", sqft: 3785000 },
-    "casadelsolresidences": { page: "projects-residential.html", id: "casa-del-sol-residences", sqft: 1122000 },
-    "purespiritcondominiums": { page: "projects-residential.html", id: "pure-spirit-condominiums", sqft: 1242000 },
-    "homeontheparkcondominiums": { page: "projects-residential.html", id: "home-on-the-park-condominiums", sqft: 340000 },
-    "loggiacondominiums": { page: "projects-residential.html", id: "loggia-condominiums", sqft: 1050000 },
-    "thespirecondominiums": { page: "projects-residential.html", id: "the-spire-condominiums", sqft: 1147000 },
-    "481university": { page: "projects-residential.html", id: "481-university-ave-condo", sqft: 2300000 },
-    "galleriaphase2": { page: "projects-residential.html", id: "1245-dupont-st-galleria-phase-2-condos", sqft: 1250000 },
-    "artistry": { page: "projects-residential.html", id: "298-dundas-st-w-artistry-condo", sqft: 700000 },
-    "199churchstreet": { page: "projects-residential.html", id: "199-church-street-condo", sqft: 950000 },
-    "squareonedistrictblock8": { page: "projects-residential.html", id: "square-one-block-8-condo", sqft: 2700000 },
-    "maverickcondos": { page: "projects-residential.html", id: "321-king-street-maverick-condo", sqft: 900000 },
-    "nobucondos": { page: "projects-residential.html", id: "15-35-mercer-condo", sqft: 2000000 },
-    "89avenueroad": { page: "projects-residential.html", id: "89-avenue-road-condo", sqft: 400000 },
-    "55charlesstreet": { page: "projects-residential.html", id: "55-charles-street-condo", sqft: 1500000 },
-    "55mercer": { page: "projects-residential.html", id: "55-mercer-condo", sqft: 1100000 },
-    "thewellbuildingsabcdefavenueverdijointventure": { page: "projects-residential.html", id: "the-well", sqft: 8000000 },
-    "emeraldcitycondominiums": { page: "projects-residential.html", id: "emerald-city-condos-block-a", sqft: 2500000 },
-    "emeraldcityb": { page: "projects-residential.html", id: "emerald-city-condos-block-b", sqft: 800000 },
-    "emeraldcityc3": { page: "projects-residential.html", id: "emerald-city-condos-block-c", sqft: 1200000 },
-    "maxcondos": { page: "projects-residential.html", id: "the-max-condo", sqft: 700000 },
-    "dundassquaregardens": { page: "projects-residential.html", id: "dundas-square-gardens-condo", sqft: 1900000 },
-    "rivercityphase3": { page: "projects-residential.html", id: "river-city-condos-phase-3", sqft: 550000 },
-    "rivercityphase4": { page: "projects-residential.html", id: "river-city-condos-phase-4", sqft: 400000 },
-    "themuseecondo": { page: "projects-residential.html", id: "the-mus-e-condo", sqft: 700000 },
-    "thecarlaw": { page: "projects-residential.html", id: "the-carlaw-plus-1220-dundas-street-east", sqft: 840000 },
-    "1220dundas": { page: "projects-residential.html", id: "the-carlaw-plus-1220-dundas-street-east", sqft: 305000 },
-    "66isabellastreet": { page: "projects-residential.html", id: "66-isabella-condos", sqft: 496000 },
-    "210simcoe": { page: "projects-residential.html", id: "210-simcoe-street-condos", sqft: 760000 },
-    "thunderbirdvalhalla2": { page: "projects-residential.html", id: "thunderbird-condominiums", sqft: 1100000 },
-    "aristoatavonshirecondostownhomes": { page: "projects-residential.html", id: "aristo-at-avonshire-condominiums", sqft: 1000000 },
-    "rivercitycondos": { page: "projects-residential.html", id: "river-city-condominiums", sqft: 750000 },
-    "themilan": { page: "projects-residential.html", id: "the-milan-condominiums", sqft: 1200000 },
-    "oceanclubresidences": { page: "projects-residential.html", id: "ocean-club-waterfront-condominiums", sqft: 1450000 },
-    "royalcanadianmilitaryinstitutercmi": { page: "projects-residential.html", id: "royal-canadian-military-institute", sqft: 1100000 },
-    "themuseumhouse": { page: "projects-residential.html", id: "the-museum-house-condominiums", sqft: 335000 },
-    "1717avenueroadcondos": { page: "projects-residential.html", id: "1717-avenue-road-condominiums", sqft: 620000 },
-    "theritzcarlton": { page: "projects-residential.html", id: "ritz-carlton", sqft: 2500000 },
-    "onestthomascondominiums": { page: "projects-residential.html", id: "one-st-thomas-residences", sqft: 955000 },
-    "sunriseseniorlivingonsteeles": { page: "projects-residential.html", id: "sunrise-senior-living", sqft: 679000 },
-    "horizonlegacycondominiums": { page: "projects-residential.html", id: "horizon-legacy-apartment-building", sqft: 375000 }
-  };
-  var galleryAreas = Object.create(null);
-  Object.keys(retrospectiveProjects).forEach(function (name) {
-    var project = retrospectiveProjects[name];
-    var key = project.page + "#" + project.id;
-    if (!galleryAreas[key]) galleryAreas[key] = { sqft: 0, count: 0 };
-    galleryAreas[key].sqft += project.sqft;
-    galleryAreas[key].count++;
-  });
-
-  var currentPage = location.pathname.split("/").pop();
-  document.querySelectorAll(".project[id]").forEach(function (card) {
-    var area = galleryAreas[currentPage + "#" + card.id];
-    var projectBody = card.querySelector(".project__body");
-    if (!area || !projectBody) return;
-    var areaLabel = document.createElement("p");
-    areaLabel.className = "project__sqft";
-    areaLabel.textContent = (area.count > 1 ? "Combined area: " : "") + area.sqft.toLocaleString("en-CA") + " sq ft";
-    projectBody.appendChild(areaLabel);
-  });
+  /* Project data (gallery cards, retrospective rows, totals) is built by js/render.js */
 
   /* ---------- Mobile navigation ---------- */
   var toggle = document.querySelector(".nav-toggle");
@@ -147,18 +52,7 @@
   /* ---------- Current year in footer ---------- */
   document.querySelectorAll("[data-current-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- Reveal on scroll ---------- */
-  var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && reveals.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
-  }
+  /* Reveal on scroll lives in the Motion section at the end of this file */
 
   /* ---------- Project gallery filter ---------- */
   var gSearch = document.querySelector("[data-project-search]");
@@ -293,15 +187,6 @@
     var chips = document.querySelectorAll("[data-decade]");
     var decade = "all";
 
-    rows.forEach(function (row) {
-      var project = retrospectiveProjects[normalizeProjectName(row.getAttribute("data-name"))];
-      if (!project) return;
-      var link = document.createElement("a");
-      link.href = project.page + "#" + project.id;
-      link.textContent = row.cells[0].textContent;
-      row.cells[0].textContent = "";
-      row.cells[0].appendChild(link);
-    });
 
     var apply = function () {
       var q = rSearch ? rSearch.value.trim().toLowerCase() : "";
@@ -343,4 +228,363 @@
     });
     apply();
   }
+})();
+
+/* =====================================================================
+   Motion: scroll reveals, counters, progress, parallax and small polish.
+   Runs after the site scripts above. Respects "reduce motion".
+   ===================================================================== */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var header = document.querySelector(".site-header");
+  var toTop = document.querySelector(".to-top");
+  var hero = document.querySelector(".hero, .page-hero");
+  var timeline = document.querySelector(".timeline");
+  var each = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+
+  /* ---------- Small markup additions (purely decorative) ---------- */
+  if (header) {
+    var bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    header.appendChild(bar);
+  }
+  if (toTop) {
+    toTop.insertAdjacentHTML("beforeend", '<svg class="to-top__ring" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26"/></svg>');
+  }
+  var homeHero = document.querySelector(".hero");
+  if (homeHero && homeHero.nextElementSibling) {
+    var next = homeHero.nextElementSibling;
+    if (!next.id) next.id = "after-hero";
+    var cue = document.createElement("a");
+    cue.className = "scroll-cue";
+    cue.href = "#" + next.id;
+    cue.innerHTML = '<span class="scroll-cue__mouse" aria-hidden="true"></span><span>Scroll</span>';
+    cue.setAttribute("aria-label", "Scroll to the next section");
+    homeHero.appendChild(cue);
+  }
+  each(".sector__more", function (el) {
+    el.innerHTML = el.innerHTML.replace(/\s*(&rarr;|→)\s*$/, ' <span class="sector__arrow" aria-hidden="true">&rarr;</span>');
+  });
+
+  /* ---------- Scroll-linked effects (one rAF-throttled handler) ---------- */
+  var parallaxOn = !reduce && window.matchMedia("(min-width: 761px) and (pointer: fine)").matches;
+  var ticking = false;
+  var update = function () {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+    var max = Math.max(1, root.scrollHeight - window.innerHeight);
+    var p = Math.min(1, Math.max(0, y / max));
+    root.style.setProperty("--progress", p.toFixed(4));
+    if (header) header.classList.toggle("is-scrolled", y > 10);
+    if (hero && parallaxOn) {
+      var h = hero.offsetHeight;
+      if (y < h) hero.style.setProperty("--parallax", (y * 0.3).toFixed(1) + "px");
+    }
+    if (timeline) {
+      var r = timeline.getBoundingClientRect();
+      var t = (window.innerHeight * 0.75 - r.top) / r.height;
+      timeline.style.setProperty("--tl", Math.min(1, Math.max(0, t)).toFixed(3));
+    }
+  };
+  var onScroll = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+
+  if (reduce) return; /* everything below is decorative motion */
+
+  /* ---------- Reveal on scroll ---------- */
+  var mark = function (sel, variant) {
+    each(sel, function (el) {
+      if (el.closest(".hero, .page-hero, .lightbox, .nav")) return;
+      el.classList.add("reveal");
+      if (variant) el.classList.add("reveal--" + variant);
+    });
+  };
+  mark(".section-head");
+  mark(".split > div:first-child:not(.split__media)", "left");
+  mark(".split__media", "mask");
+  mark(".stats .stat", "zoom");
+  mark(".sectors .sector");
+  mark(".projects .project");
+  mark(".features .feature");
+  mark(".contact-cards .contact-card");
+  mark(".timeline li");
+  mark(".toolbar");
+  mark(".table-wrap");
+  mark(".quote", "left");
+  mark(".cta", "zoom");
+  mark(".map", "zoom");
+  mark(".toc", "left");
+  mark(".prose h2");
+  mark(".note");
+  mark(".footer__top > div");
+
+  var finish = function (el) {
+    /* Hand the element back to its normal styles so hover effects work */
+    el.classList.remove("reveal", "is-in", "reveal--left", "reveal--right", "reveal--zoom", "reveal--mask");
+    el.style.removeProperty("--d");
+  };
+  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  var batch = 0, batchTimer = null;
+  var show = function (el) {
+    var i = pending.indexOf(el);
+    if (i === -1) return;
+    pending.splice(i, 1);
+    var delay = Math.min(batch++, 6) * 90;
+    clearTimeout(batchTimer);
+    batchTimer = setTimeout(function () { batch = 0; }, 120);
+    el.style.setProperty("--d", delay + "ms");
+    el.classList.add("is-in");
+    setTimeout(function () { finish(el); }, 1500 + delay);
+  };
+  /* Backup check on every scroll: anything already above the bottom of the
+     screen is shown, so fast scrolling or jump links never leave gaps. */
+  var sweep = function () {
+    var limit = window.innerHeight * 0.95;
+    pending.slice().forEach(function (el) {
+      if (el.getBoundingClientRect().top < limit) show(el);
+    });
+  };
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); show(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+    pending.forEach(function (el) { io.observe(el); });
+  }
+  var sweepQueued = false;
+  window.addEventListener("scroll", function () {
+    if (sweepQueued || !pending.length) return;
+    sweepQueued = true;
+    setTimeout(function () { sweepQueued = false; sweep(); }, 150);
+  }, { passive: true });
+  window.addEventListener("load", sweep);
+  sweep();
+
+  /* ---------- Count-up numbers ---------- */
+  var countUp = function (el) {
+    var text = el.textContent.trim();
+    var m = text.match(/^([^0-9]*)([0-9][0-9,]*\.?[0-9]*)(.*)$/);
+    if (!m) return;
+    var prefix = m[1], numStr = m[2], suffix = m[3];
+    if (/^[0-9]/.test(suffix.replace(/^[^0-9]*/, "")) && /[–-]/.test(suffix)) return; /* ranges like 1980–2024 */
+    var target = parseFloat(numStr.replace(/,/g, ""));
+    var decimals = (numStr.split(".")[1] || "").length;
+    var isYear = !decimals && !suffix && target >= 1900 && target <= 2100;
+    var from = isYear ? target - 60 : 0;
+    var dur = 1600, start = null;
+    el.setAttribute("aria-label", text);
+    var step = function (ts) {
+      if (start === null) start = ts;
+      var k = Math.min(1, (ts - start) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      var v = from + (target - from) * e;
+      el.textContent = prefix + (decimals ? v.toFixed(decimals) : Math.round(v).toString()) + suffix;
+      if (k < 1) requestAnimationFrame(step); else el.textContent = text;
+    };
+    requestAnimationFrame(step);
+  };
+  var nums = document.querySelectorAll(".stat__num");
+  if ("IntersectionObserver" in window && nums.length) {
+    var no = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { no.unobserve(en.target); countUp(en.target); } });
+    }, { threshold: 0.6 });
+    Array.prototype.forEach.call(nums, function (n) { no.observe(n); });
+  }
+
+  /* ---------- Gallery filter: results fade in ---------- */
+  var gSearch = document.querySelector("[data-project-search]");
+  if (gSearch) {
+    gSearch.addEventListener("input", function () {
+      var i = 0;
+      each(".project", function (c) {
+        if (c.hidden || c.classList.contains("reveal")) return;
+        c.classList.remove("is-pop");
+        void c.offsetWidth;
+        c.style.setProperty("--d", Math.min(i++, 8) * 40 + "ms");
+        c.classList.add("is-pop");
+      });
+    });
+  }
+
+  /* ---------- Retrospective: rows fade in after filtering ---------- */
+  var retroBody = document.querySelector(".retro tbody");
+  if (retroBody) {
+    var replay = function () { retroBody.classList.remove("is-pop"); void retroBody.offsetWidth; retroBody.classList.add("is-pop"); };
+    var rs = document.querySelector("[data-retro-search]");
+    if (rs) rs.addEventListener("input", replay);
+    each("[data-decade], .retro th button", function (b) { b.addEventListener("click", replay); });
+  }
+
+  /* ---------- Photo viewer: each new photo eases in ---------- */
+  var lbImg = document.querySelector(".lightbox__stage img");
+  if (lbImg && "MutationObserver" in window) {
+    new MutationObserver(function () {
+      if (!lbImg.getAttribute("src")) return;
+      lbImg.classList.remove("is-swapping");
+      void lbImg.offsetWidth;
+      lbImg.classList.add("is-swapping");
+    }).observe(lbImg, { attributes: true, attributeFilter: ["src"] });
+  }
+})();
+
+/* ---------- Accessibility policy: highlight the section you are reading ---------- */
+(function () {
+  "use strict";
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  if (!links.length) return;
+  var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var queued = false;
+  var spy = function () {
+    queued = false;
+    var line = window.innerHeight * 0.3, current = -1;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= line) current = i; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = targets.length - 1;
+    links.forEach(function (a, i) {
+      a.classList.toggle("is-active", i === current);
+      if (i === current) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+  };
+  window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+})();
+
+/* ---------- Background timelapse video in the page banners ---------- */
+(function () {
+  "use strict";
+  var video = document.querySelector(".hero__video");
+  if (!video) return;
+  var toggle = document.querySelector(".video-toggle");
+  var label = toggle && toggle.querySelector(".video-toggle__label");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var conn = navigator.connection || {};
+  /* Still frame only for people who asked for less motion or less data */
+  if (reduce || conn.saveData) return;
+
+  var KEY = "avenue-video-paused";
+  var userPaused = false;
+  try { userPaused = localStorage.getItem(KEY) === "1"; } catch (e) {}
+
+  var small = window.matchMedia("(max-width: 900px)").matches;
+  video.src = video.getAttribute(small ? "data-src-small" : "data-src-large");
+  video.muted = true;
+  video.setAttribute("muted", "");
+  video.preload = "auto";
+
+  var onScreen = true;
+  var tryPlay = function () {
+    if (userPaused || !onScreen || document.hidden) return;
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { /* autoplay blocked: the still frame stays */ });
+  };
+  var setLabel = function () {
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", userPaused ? "true" : "false");
+    label.textContent = userPaused ? "Play background video" : "Pause background video";
+    toggle.title = label.textContent;
+  };
+
+  video.addEventListener("playing", function () { video.classList.add("is-playing"); if (toggle) toggle.hidden = false; });
+  video.addEventListener("loadeddata", function () { if (toggle) toggle.hidden = false; });
+
+  /* Seamless loop: fade into the still frame (the video's first frame) just
+     before the end, then fade back in once the video has restarted on it. */
+  var seamCheck = function () {
+    var d = video.duration;
+    if (!d || isNaN(d)) return;
+    if (d - video.currentTime < 0.9) video.classList.add("is-seam");
+    else if (video.currentTime > 0.15 && video.currentTime < 1) video.classList.remove("is-seam");
+  };
+  if ("requestVideoFrameCallback" in video) {
+    var onFrame = function () { seamCheck(); video.requestVideoFrameCallback(onFrame); };
+    video.requestVideoFrameCallback(onFrame);
+  } else {
+    video.addEventListener("timeupdate", seamCheck);
+  }
+
+  /* Pause when the banner is scrolled away or the tab is hidden (saves battery) */
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      onScreen = entries[0].isIntersecting;
+      if (onScreen) tryPlay(); else video.pause();
+    }).observe(video.parentElement);
+  }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) video.pause(); else tryPlay(); });
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      userPaused = !userPaused;
+      try { localStorage.setItem(KEY, userPaused ? "1" : "0"); } catch (e) {}
+      setLabel();
+      if (userPaused) video.pause(); else tryPlay();
+    });
+    setLabel();
+    if (userPaused) toggle.hidden = false;
+  }
+  tryPlay();
+})();
+
+/* ---------- Dark mode: follow the device, with a sun/moon override ---------- */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var btn = document.querySelector(".theme-toggle");
+  var KEY = "avenue-theme";
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  var systemDark = function () { return !!(mq && mq.matches); };
+  var stored = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  var isDark = function () {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : systemDark();
+  };
+  var fadeTimer = null;
+  var render = function (fade) {
+    if (fade) {
+      root.classList.add("theme-fading");
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(function () { root.classList.remove("theme-fading"); }, 700);
+    }
+    var dark = isDark();
+    root.classList.toggle("dark", dark);
+    if (btn) {
+      var label = dark ? "Switch to light mode" : "Switch to dark mode";
+      btn.setAttribute("aria-label", label);
+      btn.title = label;
+      btn.setAttribute("aria-pressed", dark ? "true" : "false");
+    }
+  };
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      /* Choosing the same mode as the device goes back to following the device */
+      if ((next === "dark") === systemDark()) {
+        root.removeAttribute("data-theme");
+        try { localStorage.removeItem(KEY); } catch (e) {}
+      } else {
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem(KEY, next); } catch (e) {}
+      }
+      render(true);
+    });
+  }
+  if (mq) {
+    var onSystem = function () { if (!stored()) render(true); };
+    if (mq.addEventListener) mq.addEventListener("change", onSystem); else if (mq.addListener) mq.addListener(onSystem);
+  }
+  render(false);
+})();
+
+/* ---------- Phones: measure the home numbers panel so the banner makes room for it ---------- */
+(function () {
+  "use strict";
+  var stats = document.querySelector(".hero + .stats");
+  if (!stats) return;
+  var root = document.documentElement;
+  var set = function () { root.style.setProperty("--stats-h", stats.offsetHeight + "px"); };
+  set();
+  if ("ResizeObserver" in window) new ResizeObserver(set).observe(stats);
+  else window.addEventListener("resize", set);
 })();

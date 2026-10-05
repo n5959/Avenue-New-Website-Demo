@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin | Avenue Building Corporation</title>
+  <meta name="theme-color" content="#0c6938" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1512" media="(prefers-color-scheme: dark)">
+  <script>(function(){var d=document.documentElement;var t=null;try{t=localStorage.getItem("avenue-theme")}catch(e){}if(t==="dark"||t==="light")d.setAttribute("data-theme",t);if(t==="dark"||(t!=="light"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark")})()</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+<a class="skip-link" href="#admin-main">Skip to content</a>
+
+<!-- ============ Login ============ -->
+<section class="login" id="login" aria-labelledby="login-title">
+  <form class="login__card" id="login-form" autocomplete="off">
+    <img src="images/global/avenue_logo.png" alt="Avenue Building Corporation" width="250" height="79" class="login__logo">
+    <h1 id="login-title">Website admin</h1>
+    <p class="login__intro" id="login-intro">Sign in to edit the project gallery, retrospective and milestones.</p>
+    <label class="field"><span>Password</span><input type="password" id="login-password" required minlength="8" autocomplete="current-password"></label>
+    <label class="field" id="login-confirm-wrap" hidden><span>Confirm password</span><input type="password" id="login-confirm" minlength="8" autocomplete="new-password"></label>
+    <p class="form-error" id="login-error" role="alert" hidden></p>
+    <button class="btn" type="submit" id="login-submit">Sign in</button>
+    <p class="login__note">Until the website is on a web host, this password only keeps the editor out of casual view. Changes can only be saved by someone who has the website folder on their computer.</p>
+    <p class="login__back"><a href="index.html">&larr; Back to the website</a></p>
+  </form>
+</section>
+
+<!-- ============ Admin app ============ -->
+<div class="app" id="app" hidden>
+  <header class="app__bar">
+    <a class="app__brand" href="index.html" title="View the website"><img src="images/global/avenue_logo.png" alt="Avenue Building Corporation" width="250" height="79"><span>Admin</span></a>
+    <div class="app__status" id="folder-status" role="status"></div>
+    <div class="app__actions">
+      <button class="btn btn--sm" type="button" id="connect-folder">Connect website folder</button>
+      <a class="btn btn--sm btn--outline" href="index.html" target="_blank" rel="noopener">View site</a>
+      <button class="btn btn--sm btn--outline" type="button" id="logout">Log out</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Admin sections">
+    <button role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="true">Projects</button>
+    <button role="tab" id="tab-edit" aria-controls="panel-edit" aria-selected="false">Add project</button>
+    <button role="tab" id="tab-retro" aria-controls="panel-retro" aria-selected="false">Retrospective</button>
+    <button role="tab" id="tab-timeline" aria-controls="panel-timeline" aria-selected="false">Milestones</button>
+    <button role="tab" id="tab-settings" aria-controls="panel-settings" aria-selected="false">Map pins &amp; settings</button>
+  </nav>
+
+  <main id="admin-main" class="app__main">
+
+    <!-- Projects list -->
+    <section role="tabpanel" id="panel-projects" aria-labelledby="tab-projects">
+      <div class="panel-head">
+        <h2>Projects</h2>
+        <div class="stat-row" id="totals"></div>
+      </div>
+      <div class="list-tools">
+        <label class="search"><span class="visually-hidden">Search projects</span><input type="search" id="project-search" placeholder="Search by name or city"></label>
+        <div class="seg" role="group" aria-label="Category">
+          <button type="button" data-cat-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-cat-filter="commercial" aria-pressed="false">Commercial</button>
+          <button type="button" data-cat-filter="institutional" aria-pressed="false">Institutional</button>
+          <button type="button" data-cat-filter="residential" aria-pressed="false">Residential</button>
+        </div>
+        <label class="check"><input type="checkbox" id="needs-check"> Only addresses to check</label>
+        <button class="btn btn--sm" type="button" id="new-project">+ Add project</button>
+      </div>
+      <ul class="plist" id="project-list"></ul>
+    </section>
+
+    <!-- Add / edit project -->
+    <section role="tabpanel" id="panel-edit" aria-labelledby="tab-edit" hidden>
+      <form id="project-form" novalidate>
+        <div class="panel-head">
+          <h2 id="edit-title">Add project</h2>
+          <div class="panel-head__actions">
+            <button class="btn btn--outline btn--danger" type="button" id="delete-project" hidden>Delete project</button>
+            <button class="btn" type="submit">Save project</button>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <fieldset class="card">
+            <legend>Details</legend>
+            <div class="field">
+              <span>Category</span>
+              <div class="seg seg--radio" role="radiogroup" aria-label="Category">
+                <label><input type="radio" name="category" value="commercial" required> Commercial</label>
+                <label><input type="radio" name="category" value="institutional"> Institutional</label>
+                <label><input type="radio" name="category" value="residential"> Residential</label>
+              </div>
+            </div>
+            <label class="field"><span>Project name</span><input type="text" name="name" required maxlength="120"></label>
+            <div class="field-row">
+              <label class="field"><span>Completion date</span><input type="date" name="date"></label>
+              <label class="field"><span>Area (sq ft)</span><input type="number" name="sqft" min="0" step="1" inputmode="numeric"></label>
+            </div>
+            <label class="check"><input type="checkbox" name="inRetro" checked> Show in the retrospective (uses the year from the completion date)</label>
+            <div class="linked-rows" id="linked-rows" hidden></div>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>Location</legend>
+            <div class="field">
+              <span>Find address</span>
+              <div class="lookup">
+                <input type="text" id="address-query" placeholder="e.g. 481 University Avenue, Toronto" autocomplete="off">
+                <button class="btn btn--sm" type="button" id="address-search">Look up</button>
+              </div>
+              <small class="hint">Searches OpenStreetMap. Pick the right result to save the exact address and map pin.</small>
+            </div>
+            <ul class="results" id="address-results" aria-live="polite"></ul>
+            <label class="field"><span>Saved address <small>(kept hidden on the website)</small></span><input type="text" name="address" maxlength="200"></label>
+            <label class="field"><span>City shown on the website</span><input type="text" name="city" required maxlength="60" list="city-suggestions"></label>
+            <datalist id="city-suggestions"></datalist>
+            <div class="field-row">
+              <label class="field"><span>Pin latitude</span><input type="number" name="lat" step="any"></label>
+              <label class="field"><span>Pin longitude</span><input type="number" name="lon" step="any"></label>
+            </div>
+            <div class="pin-preview" id="pin-preview"><p>No map pin yet</p></div>
+          </fieldset>
+        </div>
+
+        <fieldset class="card">
+          <legend>Photos</legend>
+          <p class="hint">The first photo is the cover. Each caption appears under the photo in the gallery viewer (for example "South Elevation").</p>
+          <label class="drop" id="drop">
+            <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" multiple>
+            <strong>Choose photos</strong> or drag them here
+            <small>JPG, PNG or WebP. Large photos are resized for the web automatically.</small>
+          </label>
+          <ol class="photos" id="photo-list"></ol>
+        </fieldset>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="form-foot"><button class="btn" type="submit">Save project</button></div>
+      </form>
+    </section>
+
+    <!-- Retrospective -->
+    <section role="tabpanel" id="panel-retro" aria-labelledby="tab-retro" hidden>
+      <div class="panel-head">
+        <h2>Retrospective</h2>
+        <div class="panel-head__actions">
+          <button class="btn btn--outline" type="button" id="retro-add">+ Add row</button>
+          <button class="btn" type="button" id="retro-save">Save retrospective</button>
+        </div>
+      </div>
+      <div class="list-tools"><label class="search"><span class="visually-hidden">Search rows</span><input type="search" id="retro-search" placeholder="Search by name or year"></label><span class="muted" id="retro-count"></span></div>
+      <div class="table-scroll">
+        <table class="edit-table" id="retro-table">
+          <thead><tr><th scope="col">Project name</th><th scope="col">Year</th><th scope="col">Sq ft</th><th scope="col">Gallery link</th><th scope="col"><span class="visually-hidden">Remove</span></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section role="tabpanel" id="panel-timeline" aria-labelledby="tab-timeline" hidden>
+      <div class="panel-head">
+        <h2>Milestones</h2>
+        <div class="panel-head__actions">
+          <button class="btn btn--outline" type="button" id="tl-add">+ Add milestone</button>
+          <button class="btn" type="button" id="tl-save">Save milestones</button>
+        </div>
+      </div>
+      <p class="hint">Shown on the About Us page, in this order.</p>
+      <ol class="tl-list" id="tl-list"></ol>
+    </section>
+
+    <!-- Settings -->
+    <section role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" hidden>
+      <div class="panel-head"><h2>Map pins &amp; settings</h2></div>
+      <div class="form-grid">
+        <div class="card">
+          <h3>Place map pins</h3>
+          <p>Looks up every saved address that doesn't have a pin yet (plus the office) on OpenStreetMap, one per second as their rules require, then saves the pins.</p>
+          <p class="muted" id="pin-summary"></p>
+          <button class="btn" type="button" id="pin-run">Place missing pins</button>
+          <ol class="pin-log" id="pin-log" aria-live="polite"></ol>
+        </div>
+        <div class="card">
+          <h3>Office</h3>
+          <label class="field"><span>Office address (Contact page map)</span><input type="text" id="office-address"></label>
+          <p class="muted" id="office-pin"></p>
+          <button class="btn btn--outline" type="button" id="office-save">Save office address</button>
+        </div>
+        <div class="card">
+          <h3>Change password</h3>
+          <label class="field"><span>New password</span><input type="password" id="new-password" minlength="8" autocomplete="new-password"></label>
+          <label class="field"><span>Confirm new password</span><input type="password" id="new-password2" minlength="8" autocomplete="new-password"></label>
+          <button class="btn btn--outline" type="button" id="password-save">Change password</button>
+        </div>
+        <div class="card">
+          <h3>Backup</h3>
+          <p>Every save also keeps a dated copy in <code>data/backups</code>. You can download the current data at any time.</p>
+          <button class="btn btn--outline" type="button" id="download-data">Download data file</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog class="dialog" id="dialog">
+  <form method="dialog">
+    <h2 id="dialog-title"></h2>
+    <p id="dialog-text"></p>
+    <label class="check" id="dialog-extra" hidden><input type="checkbox" id="dialog-extra-box"> <span></span></label>
+    <div class="dialog__actions">
+      <button class="btn btn--outline" value="cancel">Cancel</button>
+      <button class="btn btn--danger" value="ok" id="dialog-ok">Delete</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="data/site-data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

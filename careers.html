@@ -9,11 +9,14 @@
   <meta property="og:title" content="Careers | Avenue Building Corporation">
   <meta property="og:description" content="Careers at Avenue Building Corporation. We welcome qualified and skilled workers; accommodation is available on request during recruitment.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0c6938">
+  <meta name="theme-color" content="#0c6938" media="(prefers-color-scheme: light)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#0e1512" media="(prefers-color-scheme: dark)">
+  <script>(function(){var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("avenue-theme")}catch(e){}if(t==="dark"||t==="light")d.setAttribute("data-theme",t);if(t==="dark"||(t!=="light"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark")})()</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -29,12 +32,14 @@
         <li><a class="nav__link" href="index.html">Home</a></li><li><a class="nav__link" href="about.html">About Us</a></li><li><a class="nav__link" href="retrospective.html">A Retrospective</a></li><li class="has-dropdown"><button class="nav__link" type="button" aria-expanded="false" aria-haspopup="true">Project Gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dropdown"><li><a href="projects-commercial.html">Commercial</a></li><li><a href="projects-institutional.html">Institutional</a></li><li><a href="projects-residential.html">Residential</a></li></ul></li><li><a class="nav__link" href="careers.html" aria-current="page">Careers</a></li><li class="nav__mobile-only"><a class="nav__link" href="accessibility-policy.html">Accessibility Policy</a></li>
       </ul>
       <a class="btn nav__cta" href="contact.html">Contact Us</a>
-      <a class="btn nav__cta" href="https://avenuemanagement.ca/">Login</a>
     </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><mask id="tt-mask"><rect x="-4" y="-4" width="32" height="32" fill="#fff"/><circle class="tt-cut" cx="27" cy="3" r="6" fill="#000"/></mask><circle class="tt-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tt-mask)"/><g class="tt-rays" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.2M12 20v2.2M1.8 12H4M20 12h2.2M4.8 4.8l1.5 1.5M17.7 17.7l1.5 1.5M4.8 19.2l1.5-1.5M17.7 6.3l1.5-1.5"/></g></svg></button>
   </div>
 </header>
 <main id="main">
 <section class="page-hero" style="--hero:url('../images/bkgrnd/Toronto Skyline.jpg')">
+  <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-large="Videos/skyline-timelapse-1080.mp4" data-src-small="Videos/skyline-timelapse-720.mp4"></video>
+  <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="video-toggle__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="video-toggle__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 7 5.5z"/></svg><span class="video-toggle__label">Pause background video</span></button>
   <div class="wrap">
     <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li><span aria-current="page">Careers</span></li></ol>
     <span class="eyebrow">Work with us</span>
@@ -71,21 +76,21 @@
   <div class="sector__body">
     <h3>Commercial</h3>
     <p>Head offices, retail centres, cultural venues and hospitality — including the Royal Ontario Museum&#x27;s Michael Lee-Chin Crystal and Roy Thomson Hall.</p>
-    <span class="sector__more">11 projects in the gallery &rarr;</span>
+    <span class="sector__more"><span data-stat="gallery.commercial.projects">11 projects</span> in the gallery &rarr;</span>
   </div>
 </a><a class="sector reveal" href="projects-institutional.html">
   <img src="images/gallery/institutional/Ismali-Centre-01.jpg" alt="" loading="lazy">
   <div class="sector__body">
     <h3>Institutional</h3>
     <p>Hospitals, transit stations, universities, libraries and research centres, from Humber River Regional Hospital to York University TTC Station.</p>
-    <span class="sector__more">16 projects in the gallery &rarr;</span>
+    <span class="sector__more"><span data-stat="gallery.institutional.projects">16 projects</span> in the gallery &rarr;</span>
   </div>
 </a><a class="sector reveal" href="projects-residential.html">
   <img src="images/gallery/residential/2018-the-well-completed-4.webp" alt="" loading="lazy">
   <div class="sector__body">
     <h3>Residential</h3>
     <p>High-rise condominiums and rental towers across the GTA, including The Well, Maple Leaf Square and 481 University Avenue.</p>
-    <span class="sector__more">52 projects in the gallery &rarr;</span>
+    <span class="sector__more"><span data-stat="gallery.residential.projects">52 projects</span> in the gallery &rarr;</span>
   </div>
 </a></div>
   </div>
@@ -127,12 +132,14 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2007&ndash;<span data-current-year>2026</span> Avenue Building Corporation. All rights reserved.</span>
-      <a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a>
+      <span class="footer__bottom-links"><a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a><a class="footer__admin" href="admin.html">Admin login</a></span>
     </div>
   </div>
 </footer>
 <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 
+<script src="data/site-data.js" defer></script>
+<script src="js/render.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

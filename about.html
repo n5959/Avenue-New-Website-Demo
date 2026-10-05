@@ -9,11 +9,14 @@
   <meta property="og:title" content="About Us | Avenue Building Corporation">
   <meta property="og:description" content="Founded in 1965, Avenue Building Corporation (Avenue Group) is a leading concrete forming contractor for architecturally exposed and complex concrete in Ontario.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0c6938">
+  <meta name="theme-color" content="#0c6938" media="(prefers-color-scheme: light)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#0e1512" media="(prefers-color-scheme: dark)">
+  <script>(function(){var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("avenue-theme")}catch(e){}if(t==="dark"||t==="light")d.setAttribute("data-theme",t);if(t==="dark"||(t!=="light"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark")})()</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -29,12 +32,14 @@
         <li><a class="nav__link" href="index.html">Home</a></li><li><a class="nav__link" href="about.html" aria-current="page">About Us</a></li><li><a class="nav__link" href="retrospective.html">A Retrospective</a></li><li class="has-dropdown"><button class="nav__link" type="button" aria-expanded="false" aria-haspopup="true">Project Gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dropdown"><li><a href="projects-commercial.html">Commercial</a></li><li><a href="projects-institutional.html">Institutional</a></li><li><a href="projects-residential.html">Residential</a></li></ul></li><li><a class="nav__link" href="careers.html">Careers</a></li><li class="nav__mobile-only"><a class="nav__link" href="accessibility-policy.html">Accessibility Policy</a></li>
       </ul>
       <a class="btn nav__cta" href="contact.html">Contact Us</a>
-      <a class="btn nav__cta" href="https://avenuemanagement.ca/">Login</a>
     </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><mask id="tt-mask"><rect x="-4" y="-4" width="32" height="32" fill="#fff"/><circle class="tt-cut" cx="27" cy="3" r="6" fill="#000"/></mask><circle class="tt-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tt-mask)"/><g class="tt-rays" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.2M12 20v2.2M1.8 12H4M20 12h2.2M4.8 4.8l1.5 1.5M17.7 17.7l1.5 1.5M4.8 19.2l1.5-1.5M17.7 6.3l1.5-1.5"/></g></svg></button>
   </div>
 </header>
 <main id="main">
 <section class="page-hero" style="--hero:url('../images/bkgrnd/Toronto Skyline.jpg')">
+  <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-large="Videos/skyline-timelapse-1080.mp4" data-src-small="Videos/skyline-timelapse-720.mp4"></video>
+  <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="video-toggle__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="video-toggle__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 7 5.5z"/></svg><span class="video-toggle__label">Pause background video</span></button>
   <div class="wrap">
     <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li><span aria-current="page">About Us</span></li></ol>
     <span class="eyebrow">Since 1965</span>
@@ -73,17 +78,7 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head reveal"><div><span class="eyebrow">Milestones</span><h2>Six decades of landmarks</h2></div><p>Selected highlights from our <a href="retrospective.html">project retrospective</a>.</p></div>
-    <ol class="timeline">
-      <li class="reveal"><div class="timeline__year">1965</div><div><h3>Avenue Group is founded</h3><p>The company begins its long history in the concrete forming business.</p></div></li>
-      <li class="reveal"><div class="timeline__year">1980</div><div><h3>Esso Plaza Office Buildings</h3><p>The earliest project in our retrospective, at 3,500,000 sq ft.</p></div></li>
-      <li class="reveal"><div class="timeline__year">1990</div><div><h3><a href="projects-institutional.html#the-canadian-broadcasting-centre">Canadian Broadcasting Centre</a></h3><p>Headquarters building in downtown Toronto — 3,000,000 sq ft.</p></div></li>
-      <li class="reveal"><div class="timeline__year">1998</div><div><h3>Air Canada Centre</h3><p>Concrete forming for Toronto&#x27;s downtown arena — 800,000 sq ft.</p></div></li>
-      <li class="reveal"><div class="timeline__year">2004</div><div><h3><a href="projects-commercial.html#royal-ontario-museum-the-michael-lee-chin-crystal">Royal Ontario Museum Crystal</a></h3><p>The Renaissance ROM Crystal — exposed, angular concrete at its most demanding.</p></div></li>
-      <li class="reveal"><div class="timeline__year">2007</div><div><h3><a href="projects-residential.html#maple-leaf-square">Maple Leaf Square</a></h3><p>One of our largest single projects at 3,785,000 sq ft.</p></div></li>
-      <li class="reveal"><div class="timeline__year">2012</div><div><h3><a href="projects-institutional.html#humber-river-regional-hospital">Humber River Regional Hospital</a></h3><p>A 3,104,000 sq ft acute-care hospital in Toronto.</p></div></li>
-      <li class="reveal"><div class="timeline__year">2018</div><div><h3><a href="projects-residential.html#the-well">The Well</a></h3><p>Buildings A–F delivered through the Avenue-Verdi joint venture — 8,000,000 sq ft.</p></div></li>
-      <li class="reveal"><div class="timeline__year">2024</div><div><h3><a href="projects-residential.html#481-university-ave-condo">481 University Avenue</a></h3><p>Our most recent listed project — 2,300,000 sq ft in downtown Toronto.</p></div></li>
-    </ol>
+    <ol class="timeline" data-timeline></ol>
   </div>
 </section>
 
@@ -135,12 +130,14 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2007&ndash;<span data-current-year>2026</span> Avenue Building Corporation. All rights reserved.</span>
-      <a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a>
+      <span class="footer__bottom-links"><a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a><a class="footer__admin" href="admin.html">Admin login</a></span>
     </div>
   </div>
 </footer>
 <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 
+<script src="data/site-data.js" defer></script>
+<script src="js/render.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

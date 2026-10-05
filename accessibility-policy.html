@@ -9,11 +9,14 @@
   <meta property="og:title" content="Accessibility Policy (AODA) | Avenue Building Corporation">
   <meta property="og:description" content="Avenue Building Corporation&#x27;s Accessibility Standards for Ontarians with Disabilities policy and Multi-Year Accessibility Plan.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0c6938">
+  <meta name="theme-color" content="#0c6938" media="(prefers-color-scheme: light)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#0e1512" media="(prefers-color-scheme: dark)">
+  <script>(function(){var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("avenue-theme")}catch(e){}if(t==="dark"||t==="light")d.setAttribute("data-theme",t);if(t==="dark"||(t!=="light"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark")})()</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -29,12 +32,14 @@
         <li><a class="nav__link" href="index.html">Home</a></li><li><a class="nav__link" href="about.html">About Us</a></li><li><a class="nav__link" href="retrospective.html">A Retrospective</a></li><li class="has-dropdown"><button class="nav__link" type="button" aria-expanded="false" aria-haspopup="true">Project Gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dropdown"><li><a href="projects-commercial.html">Commercial</a></li><li><a href="projects-institutional.html">Institutional</a></li><li><a href="projects-residential.html">Residential</a></li></ul></li><li><a class="nav__link" href="careers.html">Careers</a></li><li class="nav__mobile-only"><a class="nav__link" href="accessibility-policy.html" aria-current="page">Accessibility Policy</a></li>
       </ul>
       <a class="btn nav__cta" href="contact.html">Contact Us</a>
-      <a class="btn nav__cta" href="https://avenuemanagement.ca/">Login</a>
     </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><mask id="tt-mask"><rect x="-4" y="-4" width="32" height="32" fill="#fff"/><circle class="tt-cut" cx="27" cy="3" r="6" fill="#000"/></mask><circle class="tt-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#tt-mask)"/><g class="tt-rays" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.2M12 20v2.2M1.8 12H4M20 12h2.2M4.8 4.8l1.5 1.5M17.7 17.7l1.5 1.5M4.8 19.2l1.5-1.5M17.7 6.3l1.5-1.5"/></g></svg></button>
   </div>
 </header>
 <main id="main">
 <section class="page-hero" style="--hero:url('../images/bkgrnd/Toronto Skyline.jpg')">
+  <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-large="Videos/skyline-timelapse-1080.mp4" data-src-small="Videos/skyline-timelapse-720.mp4"></video>
+  <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="video-toggle__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="video-toggle__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 7 5.5z"/></svg><span class="video-toggle__label">Pause background video</span></button>
   <div class="wrap">
     <ol class="crumbs" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li><span aria-current="page">Accessibility Policy</span></li></ol>
     <span class="eyebrow">AODA</span>
@@ -44,7 +49,7 @@
 </section>
 <section class="section">
   <div class="wrap prose-layout">
-    <nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#purpose">Purpose</a></li><li><a href="#policy">Policy statement</a></li><li><a href="#principles">Principles</a></li><li><a href="#scope">Scope</a></li><li><a href="#definitions">Definitions</a></li><li><a href="#procedures">Procedures</a></li><li><a href="#plan">Multi-Year Accessibility Plan</a></li><li><a href="#feedback">Feedback</a></li><li><a href="#documents">Documents</a></li></ol></nav>
+    <nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#purpose">Purpose</a></li><li><a href="#policy">Policy statement</a></li><li><a href="#principles">Principles</a></li><li><a href="#scope">Scope</a></li><li><a href="#definitions">Definitions</a></li><li><a href="#procedures">Procedures</a></li><li><a href="#plan">Multi-Year Accessibility Plan</a></li><li><a href="#feedback">Feedback</a></li></ol></nav>
     <div class="prose">
       <h2 id="purpose">Purpose</h2>
       <p>This policy addresses the requirements of Ontario Regulation 429/07, Accessibility Standards for Customer Service, made under the Accessibility for Ontarians with Disabilities Act, 2005.</p>
@@ -121,12 +126,6 @@
         <div class="contact-card"><span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><h3>Phone</h3><p><a href="tel:+19059519990">905-951-9990</a></p></div></div>
         <div class="contact-card"><span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 14h12v8H6z"/></svg></span><div><h3>Fax</h3><p>905-951-3444 — customer feedback forms are available at our reception.</p></div></div>
       </div>
-
-      <h2 id="documents">Documents</h2>
-      <ul class="downloads">
-        <li><a href="data/AODA_Customer_Feedback_Form_20170517.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 18h4"/></svg> AODA Customer Feedback Form (PDF)</a></li>
-        <li><a href="data/SAMPLE_AvenueBuildingCorp_Letter_Of_Employment_20170517.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 18h4"/></svg> Sample Letter of Employment (PDF)</a></li>
-      </ul>
     </div>
   </div>
 </section>
@@ -167,12 +166,14 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2007&ndash;<span data-current-year>2026</span> Avenue Building Corporation. All rights reserved.</span>
-      <a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a>
+      <span class="footer__bottom-links"><a href="accessibility-policy.html">Accessibility Standards for Ontarians with Disabilities Policy</a><a class="footer__admin" href="admin.html">Admin login</a></span>
     </div>
   </div>
 </footer>
 <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 
+<script src="data/site-data.js" defer></script>
+<script src="js/render.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
